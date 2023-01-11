@@ -6,7 +6,7 @@ gemspec
 gem "rake", "~> 13.0"
 
 group :test do
-  gem "faker", "~> 2.12"
+  gem "faker", "~> 3.1"
   gem "permafrost", "~> 1.0"
   gem "rspec", "~> 3.0"
   gem "rubocop", "~> 0.84.0"
