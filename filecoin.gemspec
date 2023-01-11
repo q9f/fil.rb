@@ -1,43 +1,36 @@
 # frozen_string_literal: true
+# coding: utf-8
 
-require_relative "lib/filecoin/version"
+lib = File.expand_path("lib", __dir__).freeze
+$LOAD_PATH.unshift lib unless $LOAD_PATH.include? lib
+
+require "fil/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "filecoin"
-  spec.version = Filecoin::VERSION
+  spec.name = "fil"
+  spec.version = Fil::VERSION
   spec.authors = ["Afri Schoedon", "Pedro Costa"]
   spec.email = ["ruby@q9f.cc", "pedro@subvisual.co"]
 
-  spec.summary = "Interact with the Filecoin network"
-  spec.description = <<~DESCRIPTION
-    Filecoin (https://filecoin.io/) is a distributed storage network based on a
-    blockchain mechanism.  Filecoin miners provide storage capacity for the
-    network, earning FIL by periodically prooving the specified capacity is
-    provided to the network.
-
-    The Filecoin blockchain maintains the ledger for FIL transactions, and
-    implements the Filecoin VM for the execution of contracts and market
-    mechanisms. These include storage deals, where clients pay miners to store
-    data in the network.
-
-    This gem makes use of the JSON RPC API made available by Lotus
-    (https://lotu.sh/), the official implementation of the network.
-  DESCRIPTION
+  spec.summary = %q{Ruby Filecoin library.}
+  spec.description = %q{Library to handle Filecoin accounts, messages, and transactions.}
   spec.homepage = "https://github.com/q9f/fil.rb"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7")
+  spec.license = "Apache-2.0"
 
-  spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/q9f/fil.rb"
-  spec.metadata["changelog_uri"] = "https://github.com/q9f/fil.rb/blob/master/CHANGELOG.md"
+  spec.metadata = {
+    "bug_tracker_uri" => "https://github.com/q9f/fil.rb/issues",
+    "changelog_uri" => "https://github.com/q9f/fil.rb/blob/main/CHANGELOG.md",
+    "documentation_uri" => "https://q9f.github.io/fil.rb/",
+    "github_repo" => "https://github.com/q9f/fil.rb",
+    "source_code_uri" => "https://github.com/q9f/fil.rb",
+  }.freeze
 
-  # Specify which files should be added to the gem when it is released.
-  # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
-  spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.start_with?("spec/") }
-  end
+  spec.files = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ["lib"]
+  spec.require_paths = ["lib", "abis"]
+  spec.test_files = spec.files.grep %r{^(test|spec|features)/}
 
-  spec.add_runtime_dependency "dry-struct", "~> 1.0"
+  spec.platform = Gem::Platform::RUBY
+  spec.required_ruby_version = ">= 2.7", "< 4.0"
 end

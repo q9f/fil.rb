@@ -1,146 +1,24 @@
-filecoin-ruby
-=============
+<!--
+# @markup markdown
+# @title Filecoin for Ruby
+# @author Afri Schoedon
+-->
 
-![Ruby](https://github.com/subvisual/filecoin-ruby/workflows/Ruby/badge.svg)
+# Filecoin for Ruby
+
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/q9f/fil.rb/spec.yml?branch=main)](https://github.com/q9f/fil.rb/actions)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/q9f/fil.rb)](https://github.com/q9f/fil.rb/releases)
+[![Gem](https://img.shields.io/gem/v/fil)](https://rubygems.org/gems/fil)
+[![Gem](https://img.shields.io/gem/dt/fil)](https://rubygems.org/gems/fil)
+[![Visitors](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fq9f%2Ffil.rb&count_bg=%2379C83D&title_bg=%23555555&icon=rubygems.svg&icon_color=%23FF0000&title=visitors&edge_flat=false)](https://hits.seeyoufarm.com)
+[![codecov](https://codecov.io/gh/q9f/fil.rb/branch/main/graph/badge.svg?token=IK7USBPBZY)](https://codecov.io/gh/q9f/fil.rb)
+[![Maintainability](https://api.codeclimate.com/v1/badges/469e6f66425198ad7614/maintainability)](https://codeclimate.com/github/q9f/fil.rb/maintainability)
+[![Top Language](https://img.shields.io/github/languages/top/q9f/fil.rb?color=red)](https://github.com/q9f/fil.rb/pulse)
+[![Yard Doc API](https://img.shields.io/badge/documentation-API-blue)](https://q9f.github.io/fil.rb)
+[![Usage Wiki](https://img.shields.io/badge/usage-WIKI-blue)](https://github.com/q9f/fil.rb/wiki)
+[![Open-Source License](https://img.shields.io/github/license/q9f/fil.rb)](LICENSE)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/q9f/fil.rb/issues)
 
 Interface to the Filecoin network APIs in Ruby.
 
-
-Installation
-------------
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem "filecoin", "~> 0.3.0"
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install filecoin
-
-
-Usage
------
-
-```ruby
-# FILECOIN_URL="https://filecoin.example.com:1234"
-# FILECOIN_TOKEN="asdfghjkl"
-Filecoin.chain_head
-```
-
-`Filecoin` exposes all the API methods for applications that prefer to load
-configuration from environment variables. These methods are implemented by
-`Filecoin::Client` which is abstracted away in this case.
-
-
-### Client
-
-Clients are initialized with the URI to the target API server. This URI can be
-provided as a `URI` object, or as a `String`. If omitted, `Filecoin::Client`
-defaults to the value of the `FILECOIN_URL` environment variable.
-
-```ruby
-# with a URI object
-Filecoin::Client.new(uri: URI("https://filecoin.example.com:1234"))
-
-# with a String
-Filecoin::Client.new(uri: "https://filecoin.example.com:1234")
-
-# from the FILECOIN_URL environment variable
-Filecoin::Client.new
-```
-
-Some methods in the [Filecoin Node API] require special [permissions]. To use
-any such method, you'll have to provide your authentication token to the
-client, either on initialization or through the `FILECOIN_TOKEN` environment
-variable.
-
-```ruby
-# with a token String
-Filecoin::Client.new(token: "asdfghjkl")
-
-# from the FILECOIN_TOKEN environment variable
-Filecoin::Client.new
-```
-
-For each supported method of the [Filecoin Node API] there is a respective
-method in `Filecoin::Client`. For instance, to call `Filecoin.ChainHead` use
-`Filecoin::Client#chain_head`.
-
-Some methods require their parameters to follow a hard-to-describe structure.
-In such cases, use the respective type class to make things simpler.
-
-All methods return the server's JSON parsed response as a plain `Hash`.
-
-
-### Supported Filecoin Node API methods
-
-- [x] `Filecoin.ChainHead`
-- [x] `Filecoin.ClientGetDealInfo`
-- [x] `Filecoin.ClientQueryAsk`
-- [x] `Filecoin.ClientStartDeal`
-- [x] `Filecoin.NetPeers`
-
-For more information on each supported method, check
-[the wiki](https://github.com/subvisual/filecoin-ruby/wiki/Supported-Methods).
-
-
-Development
------------
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run
-`rake` to run the linter and tests. You can also run `bin/console` for an
-interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To
-release a new version, update the version number in `version.rb`, and then run
-`bundle exec rake release`, which will create a git tag for the version, push
-git commits and tags, and push the `.gem` file to [rubygems.org].
-
-
-Contributing
-------------
-
-Bug reports and pull requests are welcome on GitHub at
-https://github.com/subvisual/filecoin-ruby.
-
-This project was created to provide a Ruby interface for projects we at
-Subvisual are actively working on. We are not aiming to provide an exaustive
-interface for the time being, and will focus our development efforts as needed.
-
-We welcome anyone interested in helping the development of this project to
-contribute directly with a pull request. Otherwise, please feel free to request
-any features you feel are missing in an issue. We will do our best to comply,
-within reason and the limits of our own availability.
-
-
-License
------
-
-filecoin-ruby is copyright &copy; 2020 Subvisual, Lda.
-
-It is open-source, made available for free, and is subject to the terms in
-its [license].
-
-
-About
------
-
-filecoin-ruby was created and is maintained with :heart: by
-[Subvisual][subvisual].
-
-[![Subvisual][subvisual-logo]][subvisual]
-
-
-[Filecoin Node API]: https://github.com/filecoin-project/lotus/blob/master/api/api_full.go
-[permissions]: https://lotu.sh/en+api#what-authorization-level-should-i-use-21853
-[license]: ./LICENSE.txt
-[rubygems.org]: https://rubygems.org
-[subvisual]: http://subvisual.com
-[subvisual-logo]: https://raw.githubusercontent.com/subvisual/guides/master/github/templates/logos/blue.png
-
+_Work in progress._
