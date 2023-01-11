@@ -20,10 +20,10 @@ module Filecoin
 
       def client_start_deal(start_deal_params, extract_response: false)
         params = if start_deal_params.is_a?(Hash)
-                   start_deal_params
-                 else
-                   start_deal_params.as_json
-                 end
+            start_deal_params
+          else
+            start_deal_params.as_json
+          end
 
         response = json_rpc_call("Filecoin.ClientStartDeal", params)
 
