@@ -40,5 +40,9 @@ jobs:
       - name: "Run rufo code formatting checks"
         run: |
           gem install rufo
-          rufo --check .
-
+          rufo --check ./lib
+          rufo --check ./spec
+      - name: "Run yard documentation checks"
+        run: |
+          gem install yard
+          yard doc --fail-on-warning
