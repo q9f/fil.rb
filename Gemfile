@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in filecoin.gemspec
 gemspec
 
-gem "rake", "~> 12.0"
+gem "rake", "~> 13.0"
 
 group :test do
   gem "faker", "~> 2.12"
