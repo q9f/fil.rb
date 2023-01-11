@@ -1,0 +1,102 @@
+inherit_mode:
+  merge:
+    - Include
+    - Exclude
+
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 2.7.1
+
+Layout/DotPosition:
+  EnforcedStyle: trailing
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+    - have_
+
+# `described_class` makes tests harder to read. When using tools that allow
+# jumping between definitions and the respective tests in a Rails project, or
+# using global search, the class `described_class` refers to might not be clear
+# to the reader. By avoiding the shortcut, we make sure the test stands on its
+# own with as much information as possible.
+RSpec/DescribedClass:
+  Enabled: false
+
+# Examples should be informative and explicit. While longer examples are
+# generally hard to read, the value should be adjusted as reasonable for a
+# project.
+RSpec/ExampleLength:
+  Max: 10
+
+# Examples should focus on testing one thing, but that does not necessarily
+# translate into a single expectation. For instance, testing validations in
+# a Rails model should assert (1) the model is invalid, (2) the model has
+# validation errors, and (3) these errors not only include the target field
+# but also the target error message. Another example would be testing
+# side-effects are contained.
+#
+# Similarly, not limiting the number of expectations in an example invites
+# colaborators (and consequently reviewers) to forget the rule of testing one
+# thing only, or to simply ignore it due over the "simplicity" and comfort of
+# checking for everything in a single test.
+#
+# Therefore, this cop should remain enabled, but its value should be adjusted 
+# as reasonable for the project.
+#
+RSpec/MultipleExpectations:
+  Max: 3
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/SingleLineBlockParams:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+

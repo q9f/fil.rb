@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Exit if any command fails
+set -e
+
+# Install the required languages
+asdf install
+asdf reshim
+
+# Install the Ruby dependencies
+bundle install
