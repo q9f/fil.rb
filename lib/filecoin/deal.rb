@@ -3,15 +3,15 @@ require "filecoin/deals/state"
 
 module Filecoin
   class Deal < Dry::Struct
-    attribute? :deal_id,         Dry::Types["integer"].optional
-    attribute? :duration,        Dry::Types["integer"].optional
-    attribute? :message,         Dry::Types["string"].optional
-    attribute? :piece_cid,       Dry::Types["string"].optional
+    attribute? :deal_id, Dry::Types["integer"].optional
+    attribute? :duration, Dry::Types["integer"].optional
+    attribute? :message, Dry::Types["string"].optional
+    attribute? :piece_cid, Dry::Types["string"].optional
     attribute? :price_per_epoch, Dry::Types["string"].optional
-    attribute? :proposal_cid,    Dry::Types["string"].optional
-    attribute? :provider,        Dry::Types["string"].optional
-    attribute? :size,            Dry::Types["integer"].optional
-    attribute? :state,           Dry::Types["integer"].optional
+    attribute? :proposal_cid, Dry::Types["string"].optional
+    attribute? :provider, Dry::Types["string"].optional
+    attribute? :size, Dry::Types["integer"].optional
+    attribute? :state, Dry::Types["integer"].optional
 
     module ClassMethods
       def from_deal_info(deal_info) # rubocop:disable Metrics/MethodLength

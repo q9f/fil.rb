@@ -3,13 +3,13 @@
 require_relative "lib/filecoin/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "filecoin"
-  spec.version       = Filecoin::VERSION
-  spec.authors       = ["Pedro Costa"]
-  spec.email         = ["pedro@subvisual.co"]
+  spec.name = "filecoin"
+  spec.version = Filecoin::VERSION
+  spec.authors = ["Pedro Costa"]
+  spec.email = ["pedro@subvisual.co"]
 
-  spec.summary       = "Interact with the Filecoin network"
-  spec.description   = <<~DESCRIPTION
+  spec.summary = "Interact with the Filecoin network"
+  spec.description = <<~DESCRIPTION
     Filecoin (https://filecoin.io/) is a distributed storage network based on a
     blockchain mechanism.  Filecoin miners provide storage capacity for the
     network, earning FIL by periodically prooving the specified capacity is
@@ -35,8 +35,8 @@ Gem::Specification.new do |spec|
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     `git ls-files -z`.split("\x0").reject { |f| f.start_with?("spec/") }
   end
-  spec.bindir        = "exe"
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
+  spec.bindir = "exe"
+  spec.executables = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "dry-struct", "~> 1.0"
