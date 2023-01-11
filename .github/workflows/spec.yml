@@ -29,5 +29,3 @@ jobs:
     - name: Run Tests
       run: |
         bundle exec rspec
-      env:
-        COVERAGE: true
