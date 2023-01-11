@@ -10,7 +10,7 @@ group :test do
   gem "permafrost", "~> 1.0"
   gem "rspec", "~> 3.0"
   gem "rubocop", "~> 1.43.0"
-  gem "rubocop-performance", "~> 1.6.0"
+  gem "rubocop-performance", "~> 1.15.2"
   gem "rubocop-rspec", "~> 1.41.0"
   gem "pry", "~> 0.14"
   gem "vcr", "~> 6.0"
