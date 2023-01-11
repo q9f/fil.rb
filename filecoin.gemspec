@@ -5,8 +5,8 @@ require_relative "lib/filecoin/version"
 Gem::Specification.new do |spec|
   spec.name = "filecoin"
   spec.version = Filecoin::VERSION
-  spec.authors = ["Pedro Costa"]
-  spec.email = ["pedro@subvisual.co"]
+  spec.authors = ["Afri Schoedon", "Pedro Costa"]
+  spec.email = ["ruby@q9f.cc", "pedro@subvisual.co"]
 
   spec.summary = "Interact with the Filecoin network"
   spec.description = <<~DESCRIPTION
@@ -23,12 +23,12 @@ Gem::Specification.new do |spec|
     This gem makes use of the JSON RPC API made available by Lotus
     (https://lotu.sh/), the official implementation of the network.
   DESCRIPTION
-  spec.homepage = "https://github.com/subvisual/filecoin-ruby"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
+  spec.homepage = "https://github.com/q9f/fil.rb"
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7")
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/subvisual/filecoin-ruby"
-  spec.metadata["changelog_uri"] = "https://github.com/subvisual/filecoin-ruby/blob/master/CHANGELOG.md"
+  spec.metadata["source_code_uri"] = "https://github.com/q9f/fil.rb"
+  spec.metadata["changelog_uri"] = "https://github.com/q9f/fil.rb/blob/master/CHANGELOG.md"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
