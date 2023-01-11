@@ -11,6 +11,7 @@ module Filecoin
     def configuration
       @configuration ||= Configuration.new
     end
+
     alias config configuration
 
     def configure
